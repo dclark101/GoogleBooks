@@ -2,6 +2,7 @@ import pytest
 import pyodbc
 from dotenv import load_dotenv, dotenv_values
 from src.authentication.db_connection import SQLConnection
+from src.authentication.signup import sql_connection
 
 load_dotenv()
 
@@ -23,4 +24,4 @@ def test_if_sql_connection_failed():
 
 
 def test_if_sql_connection_succeeds():
-    pass
+    assert type(pyodbc.connect(sql_connection.connection_string)) == pyodbc.Connection
