@@ -1,7 +1,7 @@
 from db_connection import *
 import pyodbc
 from dotenv import load_dotenv, dotenv_values
-from helper_functions import password_format
+import helper.helper_functions as helper
 
 load_dotenv()
 
@@ -20,13 +20,13 @@ conn = pyodbc.connect(sql_connection.connection_string)
 
 cursor = conn.cursor()
 
-user_input = "HelloWorld12$"
+user_input = "HelloWorld$"
 
-if password_format(user_input):
+if helper.password_format(user_input):
     sql_insert = (
         """
     INSERT INTO UserAuthentication(user_email, user_password)
-    VALUES ('danteclark66@gmail.com',
+    VALUES ('sirpawser@gmail.com',
     """
         + "'"
         + user_input
